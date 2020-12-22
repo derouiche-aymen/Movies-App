@@ -32,7 +32,7 @@ const ModalExample = ({handleAdd}) => {
     <div>
       <Button color="danger" onClick={toggle}>add movie</Button>
       <Modal isOpen={modal} toggle={toggle} >
-        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+        <ModalHeader toggle={toggle}>Add a movie</ModalHeader>
         <ModalBody>
           <form>
               <label>Enter movie name</label>

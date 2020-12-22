@@ -27,3 +27,12 @@ input {
     display: flex;
     justify-content: space-between;
 }
+
+.btn{
+    display: flex !important;
+
+    justify-content: space-between !important;
+ 
+   
+  }
+  
