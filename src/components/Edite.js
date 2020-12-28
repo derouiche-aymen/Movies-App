@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-const Edite = ({el,setMovie,movie}) => {
+const Edite = ({el,handleEdit}) => {
    
     const [EdittTitle, setEdittTitle] = useState(el.title);
     const [Editrate, setEditrate] = useState(el.rate);
@@ -23,20 +23,21 @@ const Edite = ({el,setMovie,movie}) => {
     setNestedModal(!nestedModal);
     setCloseAll(true);
   }
-  const Submit=(id)=> {
-      setMovie(movie.map((x)=>(x.Id===id) ? 
-     {...x,title:EdittTitle ,rate:Editrate,
-        description:Editdiscreption,posterUrl:EditposterUrl}
-        : x ))
+
+  const editt=()=>{
+    handleEdit(el.Id,EdittTitle,Editrate,Editdiscreption,EditposterUrl);
+    setModal(!modal);
+    
   }
+ 
 
   return (
     <div>
       <Button color="danger" onClick={toggle}>Edite</Button>
       <Modal isOpen={modal} toggle={toggle} >
-        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+        <ModalHeader toggle={toggle}>Edit movie</ModalHeader>
         <ModalBody>
-        <label>Edite movie</label>
+        <label>Edite Title</label>
               <input type="text" onChange={(e)=> setEdittTitle(e.target.value)} value={EdittTitle} />
               <br />
               <label>Movie rate</label>
@@ -50,12 +51,11 @@ const Edite = ({el,setMovie,movie}) => {
               
           
           <Modal isOpen={nestedModal} toggle={toggleNested} onClosed={closeAll ? toggle : undefined}>
-            <ModalHeader>Edite movie</ModalHeader>
-            <ModalBody>Stuff and things</ModalBody>
+            
           </Modal>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={()=>Submit(el.Id)}>Submit</Button>{' '}
+          <Button color="primary" onClick={editt}>Submit</Button>{' '}
           <Button color="secondary" onClick={toggle}>Cancel</Button>
         </ModalFooter>
       </Modal>

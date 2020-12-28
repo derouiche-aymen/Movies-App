@@ -35,4 +35,21 @@ input {
  
    
   }
+
+  .tra{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .rate{
+      display: flex;
+      margin-right: 30px;
+     
+  }
+
+  .app{
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnYB7pV4de12zrKQayds0fU56TBYw06fYaqQ&usqp=CAU");
+  }
   

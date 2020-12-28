@@ -1,8 +1,11 @@
 import React, {useState} from 'react'
 import '../App.css';
 import Edite from './Edite';
+import { Link } from 'react-router-dom'
+import { Button} from 'reactstrap'
+import Rate from './Rate'
 
-const MovieCard = ({el,handleDelete,setMovie,movie}) => {
+const MovieCard = ({el,handleDelete,handleEdit}) => {
     const Delete=()=>{
         
         handleDelete(el.Id)
@@ -10,16 +13,17 @@ const MovieCard = ({el,handleDelete,setMovie,movie}) => {
   
     return (
         <div className="movie-card">
-            <h2>{el.title}</h2>
-            <h3 style={{textDecoration:"underline"  }}>{el.rate} stars</h3>
+            <Link to ={`/trailer/${el.Id}`}>
+            <h2 >{el.title}</h2>
+            <Rate rating={el.rate}/>
             <img src={el.posterUrl} />
-            
+            </Link>
             <div className='btn'>
-            <Edite el={el} setMovie={setMovie} movie={movie}/>
-            <button onClick={Delete}>Delete</button>
+            <Edite el={el} handleEdit={handleEdit} />
+            <Button color="primary" onClick={Delete}>Delete</Button>
             </div>
-            <h3>Description :</h3>
-            <p>{el.description}</p>
+            <h3 style={{color:'#6495ED'}}>Description :</h3>
+            <p style={{color:'white'}}>{el.description}</p>
            
         </div>
     )
